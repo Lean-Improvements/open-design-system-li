@@ -1,0 +1,53 @@
+{
+  "name": "@lean-improvements/design-system",
+  "version": "1.0.0",
+  "description": "Shared SaaS design system for all Lean Improvements products — tokens, Tailwind preset, theme CSS and reference components. Cursor-inspired editorial aesthetic.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "styles.css",
+    "tokens",
+    "components",
+    "guidelines",
+    "tailwind-preset.js",
+    "index.js",
+    "readme.md"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./styles.css": "./styles.css",
+    "./tokens/*": "./tokens/*",
+    "./tailwind-preset": "./tailwind-preset.js",
+    "./components/*": "./components/*"
+  },
+  "scripts": {
+    "dev": "http-server -p 4173 -c-1 ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lean-Improvements/open-design-system-li.git"
+  },
+  "homepage": "https://github.com/Lean-Improvements/open-design-system-li#readme",
+  "bugs": {
+    "url": "https://github.com/Lean-Improvements/open-design-system-li/issues"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "tailwindcss": ">=3.4"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

@@ -1,0 +1,8 @@
+# Compiler / tooling artifacts — do not commit
+_ds/
+_ds_bundle.js
+_ds_manifest.json
+_adherence.oxlintrc.json
+.DS_Store
+node_modules/
+.npmrc

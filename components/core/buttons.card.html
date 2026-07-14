@@ -1,0 +1,47 @@
+<!-- @dsCard group="Components" viewport="700x230" name="Buttons & Badges" subtitle="Variants, sizes, status badges" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--lp-bg); font-family: var(--font-sans); color: var(--lp-ink); }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lp-muted); margin: 0 0 12px; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px;
+    font-family: var(--font-sans); font-size: 14px; font-weight: 500; line-height: 1; border-radius: 8px; border: 1px solid; cursor: pointer; }
+  .b-default { background: var(--lp-primary); color: #fff; border-color: var(--lp-primary); }
+  .b-secondary { background: var(--lp-surface); color: var(--lp-ink); border-color: var(--lp-line-strong); }
+  .b-outline { background: transparent; color: var(--lp-ink); border-color: var(--lp-line); }
+  .b-ghost { background: transparent; color: var(--lp-body); border-color: transparent; }
+  .b-ink { background: var(--lp-ink); color: var(--lp-bg); border-color: var(--lp-ink); }
+  .b-destructive { background: var(--lp-error); color: #fff; border-color: var(--lp-error); }
+  .b-sm { height: 36px; padding: 0 12px; font-size: 12px; }
+  .b-disabled { opacity: 0.5; }
+  .badge { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 4px; border: 1px solid; }
+  .bg-default { background: var(--lp-surface-alt); color: var(--lp-ink); border-color: var(--lp-line-strong); }
+  .bg-secondary { background: var(--lp-bg-soft); color: var(--lp-muted); border-color: var(--lp-line); }
+  .bg-destructive { background: var(--lp-error-soft); color: var(--lp-error); border-color: var(--lp-error); }
+</style>
+</head>
+<body>
+  <p class="label">Buttons</p>
+  <div class="row">
+    <button class="btn b-default">Create epic</button>
+    <button class="btn b-secondary">Cancel</button>
+    <button class="btn b-outline">Filter</button>
+    <button class="btn b-ghost">Skip</button>
+    <button class="btn b-ink">Download</button>
+    <button class="btn b-destructive">Delete</button>
+    <button class="btn b-default b-sm">Small</button>
+    <button class="btn b-secondary b-disabled" disabled>Disabled</button>
+  </div>
+  <p class="label">Badges</p>
+  <div class="row">
+    <span class="badge bg-default">In progress</span>
+    <span class="badge bg-secondary">Draft</span>
+    <span class="badge bg-destructive">Blocked</span>
+  </div>
+</body>
+</html>

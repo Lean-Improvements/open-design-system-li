@@ -1,0 +1,9 @@
+/* Lean Improvements SaaS — Design System
+   Global entry point. Consumers link this one file.
+   Keep this as @import lines only — no inline rules. */
+
+@import "./tokens/fonts.css";
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/base.css";

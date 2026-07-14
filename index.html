@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lean Improvements SaaS — Design System</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  body { margin: 0; background: var(--lp-bg); color: var(--lp-ink); font-family: var(--font-sans); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 56px 32px 96px; }
+  .topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px; background: color-mix(in srgb, var(--lp-bg) 85%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--lp-line); }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .mark { width: 38px; height: 38px; border-radius: 11px; background: var(--lp-ink); display: flex; align-items: center; justify-content: center; }
+  .diamond { width: 13px; height: 13px; background: var(--lp-primary); transform: rotate(45deg); }
+  .wm { font-family: var(--font-display); font-size: 15px; font-weight: 400; letter-spacing: -0.04em; line-height: 1; }
+  .wm small { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lp-muted); margin-top: 5px; }
+  .themebtn { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; background: transparent; color: var(--lp-body);
+    border: 1px solid var(--lp-line); border-radius: 8px; font-family: var(--font-sans); font-size: 13px; font-weight: 500; cursor: pointer; }
+
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lp-muted); margin: 0 0 14px; }
+  h1.hero { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.04em; font-size: 56px; line-height: 1.05; margin: 0 0 16px; }
+  .lede { font-size: 18px; line-height: 1.6; color: var(--lp-body); max-width: 640px; margin: 0 0 8px; }
+  .lede b { color: var(--lp-primary); font-weight: 500; }
+
+  section { margin-top: 72px; }
+  .sectitle { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.03em; font-size: 28px; margin: 0 0 4px; }
+  .secsub { font-size: 14px; color: var(--lp-muted); margin: 0 0 28px; }
+
+  /* colors */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 12px; }
+  .sw { border: 1px solid var(--lp-line); border-radius: 12px; overflow: hidden; }
+  .sw .chip { height: 62px; }
+  .sw .meta { padding: 9px 11px; background: var(--lp-surface); }
+  .sw .n { font-size: 12px; font-weight: 600; }
+  .sw .h { font-family: var(--font-mono); font-size: 11px; color: var(--lp-muted); margin-top: 2px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .pill { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lp-ink); padding: 5px 12px; border-radius: 9999px; }
+
+  /* type */
+  .typerow { display: flex; align-items: baseline; gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--lp-line); }
+  .typerow .spec { font-family: var(--font-mono); font-size: 11px; color: var(--lp-muted); width: 170px; flex-shrink: 0; }
+  .d { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.04em; line-height: 1.1; }
+
+  /* spacing + radius */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .barrow { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+  .barcol { text-align: center; }
+  .bar { background: var(--lp-primary); border-radius: 4px; width: 26px; }
+  .lbl { font-size: 11px; font-weight: 600; margin-top: 6px; }
+  .num { font-family: var(--font-mono); font-size: 11px; color: var(--lp-muted); margin-top: 2px; }
+  .radii { display: flex; gap: 16px; flex-wrap: wrap; }
+  .rbox { width: 56px; height: 56px; background: var(--lp-surface); border: 1px solid var(--lp-line-strong); }
+
+  /* components */
+  .panel { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: 12px; padding: 28px; }
+  .cluster { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 22px; }
+  .cluster:last-child { margin-bottom: 0; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 16px;
+    font-family: var(--font-sans); font-size: 14px; font-weight: 500; line-height: 1; border-radius: var(--radius-md); border: 1px solid; cursor: pointer; }
+  .b-default { background: var(--lp-primary); color: #fff; border-color: var(--lp-primary); }
+  .b-secondary { background: var(--lp-surface); color: var(--lp-ink); border-color: var(--lp-line-strong); }
+  .b-outline { background: transparent; color: var(--lp-ink); border-color: var(--lp-line); }
+  .b-ghost { background: transparent; color: var(--lp-body); border-color: transparent; }
+  .b-ink { background: var(--lp-ink); color: var(--lp-bg); border-color: var(--lp-ink); }
+  .b-destructive { background: var(--lp-error); color: #fff; border-color: var(--lp-error); }
+  .b-sm { height: 36px; padding: 0 12px; font-size: 12px; }
+  .badge { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 4px; border: 1px solid; }
+  .bg-default { background: var(--lp-surface-alt); color: var(--lp-ink); border-color: var(--lp-line-strong); }
+  .bg-secondary { background: var(--lp-bg-soft); color: var(--lp-muted); border-color: var(--lp-line); }
+  .bg-destructive { background: var(--lp-error-soft); color: var(--lp-error); border-color: var(--lp-error); }
+  .input { height: 40px; box-sizing: border-box; background: var(--lp-surface); color: var(--lp-ink);
+    border: 1px solid var(--lp-line); border-radius: 8px; padding: 0 12px; font-family: var(--font-sans); font-size: 14px; width: 260px; }
+  .input.focus { border-color: var(--lp-primary); }
+  /* modals */
+  .scenes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .scene { position: relative; min-height: 280px; display: flex; align-items: center; justify-content: center; overflow: hidden;
+    border: 1px solid var(--lp-line); border-radius: 12px; background: var(--lp-bg); background-image: radial-gradient(var(--lp-line) 1px, transparent 1px); background-size: 16px 16px; }
+  .scene .overlay { position: absolute; inset: 0; background: rgba(38,37,30,0.25); backdrop-filter: blur(2px); }
+  .dialog { position: relative; width: 320px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--radius-md);
+    padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-base); }
+  .dialog .x { position: absolute; right: 14px; top: 14px; color: var(--lp-muted); opacity: 0.7; cursor: pointer; }
+  .dt { font-family: var(--font-display); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; margin: 0; }
+  .dd { font-size: 13px; color: var(--lp-muted); margin: 4px 0 0; }
+  .dlabel { font-size: 12px; font-weight: 600; display: block; margin-bottom: 5px; }
+  .dfooter { display: flex; justify-content: flex-end; gap: 8px; }
+  .mini-card { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: 8px; width: 260px; }
+  .mc-h { padding: 18px 18px 0; }
+  .mc-t { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  .mc-d { font-size: 14px; color: var(--lp-muted); margin: 4px 0 0; }
+  .mc-c { padding: 14px 18px 18px; }
+
+  .cta { margin-top: 80px; border-top: 1px solid var(--lp-line); padding-top: 36px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .cta a { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 20px; background: var(--lp-ink); color: var(--lp-bg);
+    border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">
+      <div class="mark"><div class="diamond"></div></div>
+      <div class="wm">Lean Improvements<small>SaaS Design System</small></div>
+    </div>
+    <button class="themebtn" id="theme"><i data-lucide="moon" style="width:16px;height:16px"></i><span id="themelabel">Dark</span></button>
+  </div>
+
+  <div class="wrap">
+    <p class="eyebrow">Single source of truth · all apps</p>
+    <h1 class="hero">One SaaS template,<br>for every Lean Improvements app.</h1>
+    <p class="lede">A shared, Cursor-inspired editorial system: warm cream canvas, warm near-black ink, a single <b>Cursor-Orange</b> voltage and JetBrains Mono on every code surface. Hairline-only depth, weight-400 display type, full dark theme — link <code style="font-family:var(--font-mono);font-size:14px">styles.css</code> and build.</p>
+
+    <!-- COLORS -->
+    <section>
+      <h2 class="sectitle">Colors</h2>
+      <p class="secsub">Warm cream surfaces · ink ramp · scarce orange voltage · AI-timeline pastels (in-product only).</p>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:var(--lp-primary)"></div><div class="meta"><div class="n">Primary</div><div class="h">#f54e00</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-primary-active)"></div><div class="meta"><div class="n">Primary active</div><div class="h">#d04200</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-bg)"></div><div class="meta"><div class="n">Canvas</div><div class="h">#f7f7f4</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-surface);border-bottom:1px solid var(--lp-line)"></div><div class="meta"><div class="n">Surface</div><div class="h">#ffffff</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-ink)"></div><div class="meta"><div class="n">Ink</div><div class="h">#26251e</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-body)"></div><div class="meta"><div class="n">Body</div><div class="h">#5a5852</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-muted)"></div><div class="meta"><div class="n">Muted</div><div class="h">#807d72</div></div></div>
+        <div class="sw"><div class="chip" style="background:var(--lp-line)"></div><div class="meta"><div class="n">Hairline</div><div class="h">#e6e5e0</div></div></div>
+      </div>
+      <div class="pills">
+        <span class="pill" style="background:var(--lp-timeline-thinking)">Thinking</span>
+        <span class="pill" style="background:var(--lp-timeline-read)">Reading</span>
+        <span class="pill" style="background:var(--lp-timeline-grep)">Grepping</span>
+        <span class="pill" style="background:var(--lp-timeline-edit)">Editing</span>
+        <span class="pill" style="background:var(--lp-timeline-done);color:#fff">Done</span>
+      </div>
+    </section>
+
+    <!-- TYPE -->
+    <section>
+      <h2 class="sectitle">Type</h2>
+      <p class="secsub">CursorGothic → Inter substitute. Display at weight 400 with negative tracking. JetBrains Mono on code.</p>
+      <div class="typerow"><span class="spec">display-mega · 72 / 400</span><span class="d" style="font-size:52px">Ship faster</span></div>
+      <div class="typerow"><span class="spec">display-lg · 36 / 400</span><span class="d" style="font-size:36px">Workspace overview</span></div>
+      <div class="typerow"><span class="spec">display-sm · 22 / 400</span><span class="d" style="font-size:22px">Key results &amp; metrics</span></div>
+      <div class="typerow"><span class="spec">body-md · 16 / 400</span><span style="font-size:16px;color:var(--lp-body)">Default running text for descriptions and table cells.</span></div>
+      <div class="typerow"><span class="spec">code · JetBrains Mono · 13</span><span style="font-family:var(--font-mono);font-size:13px;background:var(--lp-surface);border:1px solid var(--lp-line);border-radius:8px;padding:7px 11px">npm run dev --workspace=frontend</span></div>
+    </section>
+
+    <!-- SPACING + RADIUS -->
+    <section>
+      <h2 class="sectitle">Spacing &amp; radius</h2>
+      <p class="secsub">4px base · 80px section rhythm · 8px on interactive, 12px on cards · hairline-only depth.</p>
+      <div class="grid2">
+        <div>
+          <div class="barrow">
+            <div class="barcol"><div class="bar" style="height:8px"></div><div class="lbl">xs</div><div class="num">8</div></div>
+            <div class="barcol"><div class="bar" style="height:12px"></div><div class="lbl">sm</div><div class="num">12</div></div>
+            <div class="barcol"><div class="bar" style="height:16px"></div><div class="lbl">base</div><div class="num">16</div></div>
+            <div class="barcol"><div class="bar" style="height:24px"></div><div class="lbl">lg</div><div class="num">24</div></div>
+            <div class="barcol"><div class="bar" style="height:32px"></div><div class="lbl">xl</div><div class="num">32</div></div>
+            <div class="barcol"><div class="bar" style="height:48px"></div><div class="lbl">xxl</div><div class="num">48</div></div>
+            <div class="barcol"><div class="bar" style="height:80px"></div><div class="lbl">section</div><div class="num">80</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="radii">
+            <div style="text-align:center"><div class="rbox" style="border-radius:4px"></div><div class="lbl">xs · 4</div></div>
+            <div style="text-align:center"><div class="rbox" style="border-radius:8px"></div><div class="lbl">md · 8</div></div>
+            <div style="text-align:center"><div class="rbox" style="border-radius:12px"></div><div class="lbl">lg · 12</div></div>
+            <div style="text-align:center"><div class="rbox" style="border-radius:9999px"></div><div class="lbl">pill</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section>
+      <h2 class="sectitle">Components</h2>
+      <p class="secsub">Button · Badge · Card · Input — composed from the tokens above.</p>
+      <div class="panel">
+        <div class="cluster">
+          <button class="btn b-default">Create epic</button>
+          <button class="btn b-secondary">Cancel</button>
+          <button class="btn b-outline">Filter</button>
+          <button class="btn b-ghost">Skip</button>
+          <button class="btn b-ink">Download</button>
+          <button class="btn b-destructive">Delete</button>
+          <button class="btn b-default b-sm">Small</button>
+        </div>
+        <div class="cluster">
+          <span class="badge bg-default">In progress</span>
+          <span class="badge bg-secondary">Draft</span>
+          <span class="badge bg-destructive">Blocked</span>
+        </div>
+        <div class="cluster" style="align-items:flex-start">
+          <div class="mini-card">
+            <div class="mc-h"><h3 class="mc-t">Q3 Roadmap</h3><p class="mc-d">12 epics · 4 teams</p></div>
+            <div class="mc-c"><span class="badge bg-default">On track</span></div>
+          </div>
+          <div>
+            <input class="input" value="Automate CSV import" />
+            <div style="height:10px"></div>
+            <input class="input focus" placeholder="Search epics…" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALS -->
+    <section>
+      <h2 class="sectitle">Modals</h2>
+      <p class="secsub">Yes — standard in this product (Create / edit dialogs, confirmations). Ink overlay at 25% + 2px blur, hairline card, <code style="font-family:var(--font-mono);font-size:12px">rounded-md</code>, close top-right.</p>
+      <div class="scenes">
+        <div class="scene">
+          <div class="overlay"></div>
+          <div class="dialog">
+            <span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+            <div><h3 class="dt">Create epic</h3><p class="dd">Group related features under one outcome.</p></div>
+            <div><label class="dlabel">Epic name</label><input class="input" style="width:100%" value="Automate CSV import" /></div>
+            <div class="dfooter"><button class="btn b-secondary b-sm">Cancel</button><button class="btn b-default b-sm">Create epic</button></div>
+          </div>
+        </div>
+        <div class="scene">
+          <div class="overlay"></div>
+          <div class="dialog">
+            <span class="x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+            <div><h3 class="dt">Delete epic?</h3><p class="dd">This removes the epic and unlinks its 6 features. This action can't be undone.</p></div>
+            <div class="dfooter"><button class="btn b-secondary b-sm">Cancel</button><button class="btn b-destructive b-sm">Delete</button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <p class="lede" style="margin:0">See it composed into a full app shell — the reference example.</p>
+      <a href="ui_kits/saas-app/index.html"><i data-lucide="layout-dashboard" style="width:18px;height:18px"></i> Open example app</a>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('theme');
+    const label = document.getElementById('themelabel');
+    btn.addEventListener('click', () => {
+      const dark = document.documentElement.classList.toggle('dark');
+      label.textContent = dark ? 'Light' : 'Dark';
+      btn.querySelector('i').setAttribute('data-lucide', dark ? 'sun' : 'moon');
+      if (window.lucide) window.lucide.createIcons();
+    });
+    if (window.lucide) window.lucide.createIcons();
+  </script>
+</body>
+</html>

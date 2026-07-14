@@ -1,0 +1,42 @@
+<!-- @dsCard group="Components" viewport="700x250" name="Card & Input" subtitle="Hairline card surface + form field" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--lp-bg); font-family: var(--font-sans); color: var(--lp-ink); display: flex; gap: 20px; align-items: flex-start; }
+  .card { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: 8px; box-shadow: none; width: 300px; }
+  .ch { padding: 20px 20px 0; }
+  .ct { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  .cd { font-size: 14px; color: var(--lp-muted); margin: 4px 0 0; }
+  .cc { padding: 16px 20px 20px; display: flex; gap: 8px; align-items: center; }
+  .badge { font-family: var(--font-mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 8px; border-radius: 4px; background: var(--lp-surface-alt); color: var(--lp-ink); border: 1px solid var(--lp-line-strong); }
+  .field { width: 300px; }
+  .flabel { font-size: 13px; font-weight: 600; color: var(--lp-ink); display: block; margin-bottom: 6px; }
+  .input { height: 40px; width: 100%; box-sizing: border-box; background: var(--lp-surface); color: var(--lp-ink);
+    border: 1px solid var(--lp-line); border-radius: 8px; padding: 0 12px; font-family: var(--font-sans); font-size: 14px; }
+  .input.focus { border-color: var(--lp-primary); }
+  .hint { font-size: 12px; color: var(--lp-muted); margin: 6px 0 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="ch">
+      <h3 class="ct">Q3 Roadmap</h3>
+      <p class="cd">12 epics · 4 teams</p>
+    </div>
+    <div class="cc">
+      <span class="badge">On track</span>
+    </div>
+  </div>
+  <div class="field">
+    <label class="flabel">Epic name</label>
+    <input class="input" value="Automate CSV import" />
+    <p class="hint">Default field — focus tints the border orange.</p>
+    <div style="height:12px"></div>
+    <label class="flabel">Search</label>
+    <input class="input focus" placeholder="Search epics…" />
+  </div>
+</body>
+</html>

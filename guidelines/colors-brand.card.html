@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x200" name="Brand & Surfaces" subtitle="Cursor Orange voltage + warm cream surfaces" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 20px; background: var(--lp-bg); font-family: var(--font-sans); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .sw { width: 150px; border: 1px solid var(--lp-line); border-radius: var(--radius-lg); overflow: hidden; }
+  .chip { height: 64px; }
+  .meta { padding: 8px 10px; background: var(--lp-surface); }
+  .name { font-size: 12px; font-weight: 600; color: var(--lp-ink); }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--lp-muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--lp-primary)"></div><div class="meta"><div class="name">Primary</div><div class="hex">#f54e00</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-primary-active)"></div><div class="meta"><div class="name">Primary active</div><div class="hex">#d04200</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-bg)"></div><div class="meta"><div class="name">Canvas</div><div class="hex">#f7f7f4</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-bg-soft)"></div><div class="meta"><div class="name">Canvas soft</div><div class="hex">#fafaf7</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-surface);border-bottom:1px solid var(--lp-line)"></div><div class="meta"><div class="name">Surface card</div><div class="hex">#ffffff</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-surface-alt)"></div><div class="meta"><div class="name">Surface alt</div><div class="hex">#f1f0ea</div></div></div>
+  </div>
+</body>
+</html>

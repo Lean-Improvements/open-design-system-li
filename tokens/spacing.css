@@ -1,0 +1,31 @@
+/* ── Spacing, radius & motion ───────────────────────────────────────────
+   4px base unit. 80px section rhythm. Compact 8px CTA radius (dev dialect),
+   12px cards. Hairline-only depth — no elevation tiers. */
+
+:root {
+  /* Spacing scale */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-base: 16px;
+  --space-md: 20px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section: 80px;
+
+  /* Border radius */
+  --radius-none: 0px;
+  --radius-xs: 4px;   /* inline tags, badges */
+  --radius-sm: 6px;   /* compact rows */
+  --radius-md: 8px;   /* CTA buttons, inputs — the default interactive radius */
+  --radius-lg: 12px;  /* cards, IDE panes */
+  --radius-xl: 16px;  /* large feature cards (rare) */
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.15s;
+  --dur-base: 0.2s;
+}

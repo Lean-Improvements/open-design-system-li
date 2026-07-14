@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Radius Scale" subtitle="8px CTA radius · 12px cards · hairline-only depth" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--lp-bg); font-family: var(--font-sans); color: var(--lp-ink); }
+  .row { display: flex; gap: 18px; flex-wrap: wrap; }
+  .col { text-align: center; }
+  .box { width: 64px; height: 64px; background: var(--lp-surface); border: 1px solid var(--lp-line-strong); }
+  .t { font-size: 11px; font-weight: 600; margin-top: 8px; }
+  .n { font-family: var(--font-mono); font-size: 11px; color: var(--lp-muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="col"><div class="box" style="border-radius:4px"></div><div class="t">xs</div><div class="n">4px · tags</div></div>
+    <div class="col"><div class="box" style="border-radius:6px"></div><div class="t">sm</div><div class="n">6px · rows</div></div>
+    <div class="col"><div class="box" style="border-radius:8px"></div><div class="t">md</div><div class="n">8px · CTA</div></div>
+    <div class="col"><div class="box" style="border-radius:12px"></div><div class="t">lg</div><div class="n">12px · cards</div></div>
+    <div class="col"><div class="box" style="border-radius:16px"></div><div class="t">xl</div><div class="n">16px · rare</div></div>
+    <div class="col"><div class="box" style="border-radius:9999px"></div><div class="t">pill</div><div class="n">9999px</div></div>
+  </div>
+</body>
+</html>

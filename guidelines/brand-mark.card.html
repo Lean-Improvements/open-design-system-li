@@ -1,0 +1,27 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Brand Mark & Dark Mode" subtitle="Ink square + orange diamond · light / dark" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 0; font-family: var(--font-sans); display: flex; }
+  .pane { flex: 1; padding: 28px; display: flex; align-items: center; gap: 14px; }
+  .light { background: #f7f7f4; }
+  .mark { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .diamond { width: 15px; height: 15px; background: #f54e00; transform: rotate(45deg); }
+  .wordmark { font-family: var(--font-display); font-weight: 400; font-size: 17px; letter-spacing: -0.04em; line-height: 1; }
+  .sub { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; margin-top: 5px; }
+</style>
+</head>
+<body>
+  <div class="pane light">
+    <div class="mark" style="background:#26251e"><div class="diamond"></div></div>
+    <div><div class="wordmark" style="color:#26251e">Lean Improvements</div><div class="sub" style="color:#807d72">SaaS Template</div></div>
+  </div>
+  <div class="pane dark" style="background:#1f1d18">
+    <div class="mark" style="background:#f6f3eb"><div class="diamond"></div></div>
+    <div><div class="wordmark" style="color:#f6f3eb">Lean Improvements</div><div class="sub" style="color:#aaa392">SaaS Template</div></div>
+  </div>
+</body>
+</html>

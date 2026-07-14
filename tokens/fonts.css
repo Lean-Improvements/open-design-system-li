@@ -1,0 +1,8 @@
+/* ── Fonts ──────────────────────────────────────────────────────────────
+   Production uses the licensed "CursorGothic" family for display + body.
+   It is NOT redistributable, so this open system substitutes Inter
+   (the documented fallback) and loads it + JetBrains Mono from Google Fonts.
+   When you have the CursorGothic webfont files, drop them in assets/fonts/
+   and add @font-face rules here — the --font-* stacks already list it first. */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");

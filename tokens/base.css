@@ -1,0 +1,97 @@
+/* ── Base & editorial utility classes ───────────────────────────────────
+   Element defaults + the `editorial-*` and `app-*` helper classes used
+   across the Lean Improvements SaaS app shell. */
+
+html {
+  background-color: var(--lp-bg);
+  color: var(--lp-ink);
+  font-family: var(--font-sans);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--lp-bg);
+  color: var(--lp-ink);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--lp-ink);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: var(--tracking-display);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
+
+/* ── App shell helpers ── */
+.app-shell {
+  background-color: var(--lp-bg);
+  color: var(--lp-ink);
+}
+
+.app-surface {
+  background-color: var(--lp-surface);
+  color: var(--lp-ink);
+  border: 1px solid var(--lp-line);
+  box-shadow: none;
+}
+
+/* ── Editorial helpers ── */
+.editorial-hairline { border-color: var(--lp-line); }
+.editorial-muted { color: var(--lp-muted); }
+.editorial-body { color: var(--lp-body); }
+
+/* Brand mark — ink rounded square holding an orange diamond */
+.editorial-brand-mark {
+  background-color: var(--lp-ink);
+  border-radius: 0.75rem;
+  color: #fff;
+}
+.editorial-brand-diamond {
+  background-color: var(--lp-primary);
+  transform: rotate(45deg);
+}
+
+/* Sidebar nav item */
+.editorial-nav-item {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--lp-body);
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease, transform 0.2s ease;
+}
+.editorial-nav-item:hover {
+  background-color: var(--lp-bg-soft);
+  border-color: var(--lp-line);
+  color: var(--lp-ink);
+}
+.editorial-nav-item[data-active="true"] {
+  background-color: var(--lp-ink);
+  border-color: var(--lp-ink);
+  color: #ffffff;
+}
+.dark .editorial-nav-item[data-active="true"] {
+  background-color: var(--lp-ink);
+  border-color: var(--lp-ink);
+  color: var(--lp-bg);
+}
+
+/* Uppercase panel label / eyebrow */
+.editorial-panel-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}

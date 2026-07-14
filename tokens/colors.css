@@ -1,0 +1,91 @@
+/* ── Colors ─────────────────────────────────────────────────────────────
+   Warm-cream editorial palette. Light is the default; .dark scopes the
+   inverse warm-charcoal theme. Base values + semantic aliases. */
+
+:root {
+  color-scheme: light;
+
+  /* Brand voltage — Cursor Orange. Used scarcely (primary CTA + wordmark). */
+  --lp-primary: #f54e00;
+  --lp-primary-active: #d04200;
+  --lp-primary-soft: rgba(245, 78, 0, 0.08);
+
+  /* Surfaces — warm cream canvas, never pure white floor */
+  --lp-bg: #f7f7f4;
+  --lp-bg-soft: #fafaf7;
+  --lp-surface: #ffffff;
+  --lp-surface-alt: #f1f0ea;
+  --lp-overlay: rgba(38, 37, 30, 0.05);
+
+  /* Text — warm near-black ink for body + display alike */
+  --lp-ink: #26251e;
+  --lp-body: #5a5852;
+  --lp-muted: #807d72;
+
+  /* Lines — hairline-only depth, no shadows */
+  --lp-line: #e6e5e0;
+  --lp-line-strong: #cfcdc4;
+  --lp-shadow: none;
+
+  /* Semantic */
+  --lp-error: #cf2d56;
+  --lp-error-soft: rgba(207, 45, 86, 0.08);
+  --lp-success: #1f8a65;
+
+  /* AI timeline pastels — scoped to in-product agent visualizations ONLY.
+     Never use as general system action colors. */
+  --lp-timeline-thinking: #dfa88f; /* peach  — Thinking */
+  --lp-timeline-grep: #9fc9a2;      /* mint   — Grepping */
+  --lp-timeline-read: #9fbbe0;      /* blue   — Reading */
+  --lp-timeline-edit: #c0a8dd;      /* lavender — Editing */
+  --lp-timeline-done: #c08532;      /* gold   — Done */
+
+  /* Semantic gray ramp — remapped onto warm neutrals so Tailwind
+     gray/slate/zinc/neutral utilities all read warm. */
+  --tw-gray-50: #f7f7f4;
+  --tw-gray-100: #fafaf7;
+  --tw-gray-200: #e6e5e0;
+  --tw-gray-300: #cfcdc4;
+  --tw-gray-400: #807d72;
+  --tw-gray-500: #807d72;
+  --tw-gray-600: #5a5852;
+  --tw-gray-700: #5a5852;
+  --tw-gray-800: #26251e;
+  --tw-gray-900: #26251e;
+  --tw-gray-950: #26251e;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --lp-primary-soft: rgba(245, 78, 0, 0.15);
+
+  --lp-bg: #1f1d18;
+  --lp-bg-soft: #24211c;
+  --lp-surface: #2a2721;
+  --lp-surface-alt: #322f28;
+  --lp-overlay: rgba(246, 243, 235, 0.05);
+
+  --lp-ink: #f6f3eb;
+  --lp-body: #d7d0c2;
+  --lp-muted: #aaa392;
+
+  --lp-line: #454037;
+  --lp-line-strong: #615b50;
+  --lp-shadow: none;
+
+  --lp-error: #ff4d6d;
+  --lp-error-soft: rgba(255, 77, 109, 0.15);
+
+  --tw-gray-50: #fafaf7;
+  --tw-gray-100: #f6f3eb;
+  --tw-gray-200: #d7d0c2;
+  --tw-gray-300: #aaa392;
+  --tw-gray-400: #807d72;
+  --tw-gray-500: #615b50;
+  --tw-gray-600: #454037;
+  --tw-gray-700: #322f28;
+  --tw-gray-800: #2a2721;
+  --tw-gray-900: #1f1d18;
+  --tw-gray-950: #171512;
+}

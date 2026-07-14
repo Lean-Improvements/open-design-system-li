@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Text & Hairlines" subtitle="Warm near-black ink ramp + hairline dividers" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 20px; background: var(--lp-bg); font-family: var(--font-sans); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .sw { width: 150px; border: 1px solid var(--lp-line); border-radius: var(--radius-lg); overflow: hidden; }
+  .chip { height: 56px; }
+  .meta { padding: 8px 10px; background: var(--lp-surface); }
+  .name { font-size: 12px; font-weight: 600; color: var(--lp-ink); }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--lp-muted); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--lp-ink)"></div><div class="meta"><div class="name">Ink</div><div class="hex">#26251e</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-body)"></div><div class="meta"><div class="name">Body</div><div class="hex">#5a5852</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-muted)"></div><div class="meta"><div class="name">Muted</div><div class="hex">#807d72</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-line)"></div><div class="meta"><div class="name">Hairline</div><div class="hex">#e6e5e0</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--lp-line-strong)"></div><div class="meta"><div class="name">Hairline strong</div><div class="hex">#cfcdc4</div></div></div>
+  </div>
+</body>
+</html>

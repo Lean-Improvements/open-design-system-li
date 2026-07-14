@@ -1,0 +1,31 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Timeline Pastels & Semantic" subtitle="AI agent-stage pills (in-product only) + status" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 20px; background: var(--lp-bg); font-family: var(--font-sans); }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lp-muted); margin: 0 0 10px; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .pill { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--lp-ink); padding: 5px 12px; border-radius: var(--radius-pill); }
+  .sw { display: inline-flex; align-items: center; gap: 8px; margin-right: 20px; font-size: 13px; color: var(--lp-body); }
+  .dot { width: 14px; height: 14px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <p class="label">AI timeline — in-product agent stages only</p>
+  <div class="pills">
+    <span class="pill" style="background:var(--lp-timeline-thinking)">Thinking</span>
+    <span class="pill" style="background:var(--lp-timeline-read)">Reading</span>
+    <span class="pill" style="background:var(--lp-timeline-grep)">Grepping</span>
+    <span class="pill" style="background:var(--lp-timeline-edit)">Editing</span>
+    <span class="pill" style="background:var(--lp-timeline-done);color:#fff">Done</span>
+  </div>
+  <p class="label">Semantic</p>
+  <div>
+    <span class="sw"><span class="dot" style="background:var(--lp-success)"></span>Success&nbsp;<code style="font-size:11px;color:var(--lp-muted)">#1f8a65</code></span>
+    <span class="sw"><span class="dot" style="background:var(--lp-error)"></span>Error&nbsp;<code style="font-size:11px;color:var(--lp-muted)">#cf2d56</code></span>
+  </div>
+</body>
+</html>

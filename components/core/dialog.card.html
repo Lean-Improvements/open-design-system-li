@@ -1,0 +1,67 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Dialog / Modal" subtitle="Form dialog + destructive confirm" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; padding: 0; font-family: var(--font-sans); color: var(--lp-ink); }
+  .stage { display: grid; grid-template-columns: 1fr 1fr; gap: 0; height: 340px; }
+  .scene { position: relative; display: flex; align-items: center; justify-content: center; background: var(--lp-bg);
+    background-image: radial-gradient(var(--lp-line) 1px, transparent 1px); background-size: 16px 16px; }
+  .overlay { position: absolute; inset: 0; background: rgba(38,37,30,0.25); backdrop-filter: blur(2px); }
+  .dialog { position: relative; width: 300px; background: var(--lp-surface); border: 1px solid var(--lp-line);
+    border-radius: var(--radius-md); padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-base); }
+  .x { position: absolute; right: 14px; top: 14px; color: var(--lp-muted); opacity: 0.7; }
+  .dt { font-family: var(--font-display); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; margin: 0; }
+  .dd { font-size: 13px; color: var(--lp-muted); margin: 4px 0 0; }
+  .label { font-size: 12px; font-weight: 600; display: block; margin-bottom: 5px; }
+  .input { height: 38px; width: 100%; box-sizing: border-box; background: var(--lp-surface); color: var(--lp-ink);
+    border: 1px solid var(--lp-line); border-radius: var(--radius-md); padding: 0 12px; font-family: var(--font-sans); font-size: 13px; }
+  .footer { display: flex; justify-content: flex-end; gap: 8px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 14px;
+    font-family: var(--font-sans); font-size: 13px; font-weight: 500; border-radius: var(--radius-md); border: 1px solid; cursor: pointer; }
+  .b-default { background: var(--lp-primary); color: #fff; border-color: var(--lp-primary); }
+  .b-secondary { background: var(--lp-surface); color: var(--lp-ink); border-color: var(--lp-line-strong); }
+  .b-destructive { background: var(--lp-error); color: #fff; border-color: var(--lp-error); }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <!-- form dialog -->
+    <div class="scene">
+      <div class="overlay"></div>
+      <div class="dialog">
+        <span class="x"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+        <div>
+          <h2 class="dt">Create epic</h2>
+          <p class="dd">Group related features under one outcome.</p>
+        </div>
+        <div>
+          <label class="label">Epic name</label>
+          <input class="input" value="Automate CSV import" />
+        </div>
+        <div class="footer">
+          <button class="btn b-secondary">Cancel</button>
+          <button class="btn b-default">Create epic</button>
+        </div>
+      </div>
+    </div>
+    <!-- confirm dialog -->
+    <div class="scene">
+      <div class="overlay"></div>
+      <div class="dialog">
+        <span class="x"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+        <div>
+          <h2 class="dt">Delete epic?</h2>
+          <p class="dd">This removes the epic and unlinks its 6 features. This action can't be undone.</p>
+        </div>
+        <div class="footer">
+          <button class="btn b-secondary">Cancel</button>
+          <button class="btn b-destructive">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
