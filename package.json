@@ -25,7 +25,8 @@
     "./components/*": "./components/*"
   },
   "scripts": {
-    "dev": "http-server -p 4173 -c-1 ."
+    "dev": "http-server -p 4173 -c-1 .",
+    "screenshots": "node scripts/capture-screenshots.mjs"
   },
   "repository": {
     "type": "git",
@@ -48,6 +49,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "playwright-core": "^1.49.0"
   }
 }
