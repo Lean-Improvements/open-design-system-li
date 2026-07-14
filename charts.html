@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data-viz — Lean Improvements Design System</title>
+<link rel="stylesheet" href="styles.css" />
+<!-- ECharts, version-pinned with Subresource Integrity (SRI) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"
+  integrity="sha256-6EJwvQzVvfYP78JtAMKjkcsugfTSanqe4WGFpUdzo88="
+  crossorigin="anonymous"></script>
+<style>
+  body { margin: 0; background: var(--lp-bg); color: var(--lp-ink); font-family: var(--font-sans); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 48px 32px 80px; }
+  .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--lp-muted); margin: 0 0 12px; }
+  h1 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.04em; font-size: 40px; line-height: 1.1; margin: 0 0 8px; }
+  .lede { font-size: 16px; line-height: 1.6; color: var(--lp-body); max-width: 620px; margin: 0 0 40px; }
+  .card { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: 12px; padding: 24px 24px 8px; margin-bottom: 28px; }
+  .card h2 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; font-size: 24px; margin: 0 0 2px; }
+  .card p { font-size: 13px; color: var(--lp-muted); margin: 0 0 4px; }
+  .chart { width: 100%; height: 380px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">Design system · data-viz</p>
+    <h1>Charts</h1>
+    <p class="lede">Products render charts with <b>ECharts</b>, themed with the design-system tokens — the scarce Cursor-Orange voltage, warm neutrals and the JetBrains-Mono/Inter type stack. Two production patterns below.</p>
+
+    <div class="card" id="donut-card">
+      <h2>Item distribution</h2>
+      <p>Doughnut with a centered total — initiatives, active epics, active features.</p>
+      <div class="chart" id="donut"></div>
+    </div>
+
+    <div class="card" id="bar-card">
+      <h2>OKR performance</h2>
+      <p>Vertical bars with an orange gradient fill and a dashed hairline grid.</p>
+      <div class="chart" id="bar"></div>
+    </div>
+  </div>
+
+  <script>
+    const css = getComputedStyle(document.documentElement);
+    const t = (n) => css.getPropertyValue(n).trim();
+    const INK = t('--lp-ink'), BODY = t('--lp-body'), MUTED = t('--lp-muted'),
+          LINE = t('--lp-line'), ORANGE = t('--lp-primary'), ORANGE_D = t('--lp-primary-active'),
+          GREEN = t('--lp-success'), LAV = t('--lp-timeline-edit'), SURFACE = t('--lp-surface');
+    const FONT = 'Inter, "Segoe UI", sans-serif';
+
+    function draw() {
+      // ── Doughnut ──
+      const donut = echarts.init(document.getElementById('donut'), null, { renderer: 'canvas' });
+      donut.setOption({
+        textStyle: { fontFamily: FONT },
+        tooltip: { trigger: 'item' },
+        legend: { bottom: 0, icon: 'circle', textStyle: { color: BODY, fontFamily: FONT, fontSize: 13 } },
+        title: {
+          text: '24', subtext: 'Total items', left: 'center', top: '40%',
+          textStyle: { color: INK, fontFamily: FONT, fontSize: 30, fontWeight: 400 },
+          subtextStyle: { color: MUTED, fontFamily: FONT, fontSize: 12, fontWeight: 600 },
+        },
+        series: [{
+          type: 'pie', radius: ['58%', '80%'], center: ['50%', '46%'], avoidLabelOverlap: true,
+          itemStyle: { borderColor: SURFACE, borderWidth: 3, borderRadius: 4 },
+          label: { show: false }, labelLine: { show: false },
+          data: [
+            { value: 3, name: 'Initiatives', itemStyle: { color: LAV } },
+            { value: 6, name: 'Active epics', itemStyle: { color: GREEN } },
+            { value: 15, name: 'Active features', itemStyle: { color: ORANGE } },
+          ],
+        }],
+      });
+
+      // ── Bar ──
+      const bar = echarts.init(document.getElementById('bar'), null, { renderer: 'canvas' });
+      bar.setOption({
+        textStyle: { fontFamily: FONT },
+        tooltip: { trigger: 'axis', axisPointer: { type: 'none' } },
+        grid: { left: 44, right: 24, top: 28, bottom: 48 },
+        xAxis: {
+          type: 'category', data: ['Q1 2026', 'Q2 2026', 'Q3 2026', 'Q4 2026'],
+          axisLine: { lineStyle: { color: LINE } }, axisTick: { show: false },
+          axisLabel: { color: BODY, fontFamily: FONT, fontSize: 13, fontWeight: 600 },
+        },
+        yAxis: {
+          type: 'value', max: 100, interval: 20,
+          axisLabel: { color: MUTED, fontFamily: FONT, fontSize: 11, formatter: '{value}%' },
+          splitLine: { lineStyle: { color: LINE, type: 'dashed' } },
+        },
+        series: [{
+          type: 'bar', barWidth: '46%',
+          data: [72, 88, 54, 40],
+          itemStyle: {
+            borderRadius: [6, 6, 0, 0],
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: ORANGE }, { offset: 1, color: ORANGE_D },
+            ]),
+          },
+          label: { show: true, position: 'top', color: INK, fontFamily: FONT, fontSize: 13, fontWeight: 700, formatter: '{c}%' },
+        }],
+      });
+
+      window.addEventListener('resize', () => { donut.resize(); bar.resize(); });
+    }
+
+    // Draw once webfonts are ready so canvas text uses Inter.
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(draw); } else { draw(); }
+  </script>
+</body>
+</html>

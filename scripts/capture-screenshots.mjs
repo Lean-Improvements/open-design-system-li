@@ -69,6 +69,13 @@ async function run() {
   await page.screenshot({ path: join(OUT, "hero-dark.png"), fullPage: true });
   console.log("✓ hero-dark.png");
 
+  // ── Charts (ECharts, brand-themed) ──
+  await page.goto(`${BASE}/charts.html`, { waitUntil: "load" });
+  await ready();
+  await wait(900); // let ECharts render to canvas
+  await shot("#donut-card", "chart-donut.png");
+  await shot("#bar-card", "chart-bar.png");
+
   // ── Reference app (dashboard) ──
   await page.goto(`${BASE}/ui_kits/saas-app/index.html`, { waitUntil: "load" });
   await ready();

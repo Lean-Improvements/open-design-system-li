@@ -23,6 +23,7 @@ Explore the whole system interactively (no install, runs in your browser):
 
 - **Showcase** → **<https://lean-improvements.github.io/open-design-system-li/>** — colors, type, spacing, buttons, badges, cards, inputs, dialogs, with a live dark-mode toggle.
 - **Reference app** → **<https://lean-improvements.github.io/open-design-system-li/ui_kits/saas-app/>** — the system composed into a full product surface (sidebar, stat counters, epics table).
+- **Charts** → **<https://lean-improvements.github.io/open-design-system-li/charts.html>** — ECharts data-viz themed with the tokens (doughnut + bar).
 
 ---
 
@@ -137,15 +138,12 @@ Stats are **big display figures** with a tiny muted uppercase eyebrow above:
 ![Features](https://img.shields.io/badge/Features-42-26251e?style=for-the-badge)
 
 Charts in products use **[ECharts](https://echarts.apache.org)** themed with these
-tokens (scarce orange, warm neutrals). Illustrative distribution:
+tokens — scarce Cursor-Orange voltage, warm neutrals, Inter/JetBrains-Mono type.
+[▶ See the charts live](https://lean-improvements.github.io/open-design-system-li/charts.html):
 
-```mermaid
-pie showData
-    title Epic status this quarter
-    "On track" : 4
-    "In progress" : 2
-    "Blocked" : 1
-```
+![Item distribution — doughnut](docs/screenshots/chart-donut.png)
+
+![OKR performance — bar](docs/screenshots/chart-bar.png)
 
 The reference dashboard shows counters, a status table and progress bars together:
 
@@ -197,6 +195,7 @@ helpers**. When in doubt, the repo wins.
 - `ui_kits/saas-app/` — the reference example app (sidebar + dashboard + dark-mode toggle).
 - `guidelines/*.card.html` — foundation specimen cards (Colors / Type / Spacing / Brand).
 - `index.html` — one-page visual preview of the whole system.
+- `charts.html` — ECharts data-viz demo (doughnut + bar), brand-themed.
 - `docs/screenshots/` — the images used in this README (regenerate with `npm run screenshots`).
 - `SKILL.md` — Agent-Skill manifest for using this system in Claude Code.
 
